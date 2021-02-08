@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/firestore";
 
 var firebaseConfig = {
-    apiKey: "AIzaSyAIccGIIVBGgPcWmOFp7OhwOWq2rUSOXlc",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "solitude-admin-client.firebaseapp.com",
     projectId: "solitude-admin-client",
     storageBucket: "solitude-admin-client.appspot.com",
-    messagingSenderId: "74737409636",
-    appId: "1:74737409636:web:8f1352a5217f1413768971",
-    measurementId: "G-6SBZQDXKCM"
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APPID,
+    measurementId: process.env.REACT_APP_MEASUREMENTID
   };
 
 firebase.initializeApp(firebaseConfig);
