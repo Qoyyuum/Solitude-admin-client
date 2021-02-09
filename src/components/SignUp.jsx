@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {signInWithGoogle} from "../firebase";
 
 function Copyright() {
   return (
@@ -141,7 +142,7 @@ export default function SignUp() {
           <Typography component="h3" variant="h6">
             Sign up using 
           </Typography>
-          <Button><i class="fab fa-google fa-3x"></i></Button>
+          <Button onClick={event => {signInWithGoogle()}}><i class="fab fa-google fa-3x"></i></Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/" variant="body2">
