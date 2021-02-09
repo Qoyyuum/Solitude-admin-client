@@ -124,7 +124,10 @@ export default function SignIn() {
           <Typography component="h3" variant="h6">
             Sign in using 
           </Typography>
-          <Button onClick={(event) => {signInWithGoogle()}}><i class="fab fa-google fa-3x"></i></Button>
+          <Button onClick={() => {
+            signInWithGoogle();
+            }}
+            ><i class="fab fa-google fa-3x"></i></Button>
           <Grid container>
             <Grid item xs>
               <Link to="passwordReset" variant="body2">
