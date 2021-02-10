@@ -54,7 +54,9 @@ export default function PasswordReset() {
             
           />
           <button
-            
+            onClick = {event => {
+              sendResetEmail(event);
+            }}
           >
             Send me a reset link
           </button>
