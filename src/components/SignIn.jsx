@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {signInWithGoogle} from "../firebase";
+import {auth, signInWithGoogle} from "../firebase";
 
 function Copyright() {
   return (
@@ -57,7 +57,11 @@ export default function SignIn() {
   const signInWithEmailAndPasswordHandler = 
     (event, email, password) => {
     event.preventDefault();
-  } 
+    auth.signInWithEmailAndPassword(email, password).catch(error => {
+      setError("Error signing in with password and email!");
+      console.error("Error sigining in with password and email", error);
+    });
+  } ;
 
   const onChangeHandler = (event) => {
     const {name, value} = event.currentTarget;
@@ -121,13 +125,14 @@ export default function SignIn() {
           >
             Sign In
           </Button>
+          <Grid container>
           <Typography component="h3" variant="h6">
             Sign in using 
-          </Typography>
+          </Typography><Grid item>
           <Button onClick={() => {
             signInWithGoogle();
             }}
-            ><i class="fab fa-google fa-3x"></i></Button>
+            ><i class="fab fa-google fa-3x"></i></Button></Grid></Grid>
           <Grid container>
             <Grid item xs>
               <Link to="passwordReset" variant="body2">

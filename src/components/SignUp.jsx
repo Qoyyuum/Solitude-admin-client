@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {signInWithGoogle} from "../firebase";
+import {auth, generateUserDocument, signInWithGoogle} from "../firebase";
 
 function Copyright() {
   return (
@@ -53,8 +53,17 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
-  const createUserWithEmailAndPasswordHandler = (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = async(event, email, password) => {
       event.preventDefault();
+
+      try {
+        const {user} = await auth.createUserWithEmailAndPassword(email, password);
+        generateUserDocument(user, {name});
+      }
+      catch (error) {
+        setError("Error Siging up with email and password");
+      }
+
       setEmail("");
       setPassword("");
       setName("");

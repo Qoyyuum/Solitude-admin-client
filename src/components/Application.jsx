@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Router} from "@reach/router";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import UserProvider from "../providers/UserProvider";
 import ProfilePage from "./ProfilePage";
 import PasswordReset from "./PasswordReset";
+import { UserContext } from "../providers/UserProvider";
 
 export default function Application () {
-    const user = null;
+    const user = useContext(UserContext);
     return (
-        user ? <ProfilePage /> : <Router>
+        user ? <ProfilePage /> 
+        : <Router>
             <SignUp path = "signUp" />
             <SignIn path="/" />
             <PasswordReset path ="passwordReset" />

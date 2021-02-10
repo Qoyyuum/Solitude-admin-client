@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
+import {auth} from "../firebase";
+import {UserContext} from "../providers/UserProvider";
 
 export default function PasswordReset() {
   const [email, setEmail] = useState("");
@@ -13,6 +15,14 @@ export default function PasswordReset() {
   };
   const sendResetEmail = event => {
     event.preventDefault();
+    auth.sendPasswordResetEmail(email).then(() => {
+      setEmailHasBeenSent(true);
+      setTimeout(() => {
+        setEmailHasBeenSent(false)
+      }, 3000);
+    }).catch(() => {
+      setError("Error resetting password");
+    });
   };
   return (
     <div >
