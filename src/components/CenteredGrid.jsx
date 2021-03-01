@@ -5,6 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import MapContainer from './MapContainer';
 import Container from '@material-ui/core/Container';
+import HistoryItems from "./HistoryItems";
+import UpcomingItems from "./UpcomingItems";
+import CheckInsItems from "./CheckInsItems";
+import CheckOutsItems from "./CheckOutsItems";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,23 +30,23 @@ export default function CenteredGrid() {
       <Grid container spacing={2} direction="row">
         <Grid container spacing={2} direction="column" xs={3}>
           <Grid item>
-            <Paper className={classes.paper}>History</Paper>
+            <HistoryItems />
           </Grid>
           <Grid item>
-            <Paper className={classes.paper}>Upcoming events</Paper>
+            <UpcomingItems />
           </Grid>
         </Grid>
         <Grid container spacing={2} xs>
-          <Grid item><Container maxWidth="sm"><MapContainer className={classes.paper}/></Container>
-            
+          <Grid item>
+            <Container maxWidth="sm"><MapContainer className={classes.paper}/></Container>
           </Grid>
         </Grid>
         <Grid container spacing={2} direction="column" xs={3}>
           <Grid item >
-            <Paper className={classes.paper}>Check-in</Paper>
+            <CheckInsItems />
           </Grid>
           <Grid item>
-            <Paper className={classes.paper}>Check-out</Paper>
+            <CheckOutsItems />
           </Grid>
         </Grid>
       </Grid>
