@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {UserContext} from "../providers/UserProvider";
-import {auth} from "../firebase";
+import Container from "@material-ui/core/Container";
 import ButtonAppBar from "./ButtonAppBar";
 
 export default function ProfilePage() {
@@ -9,9 +9,10 @@ export default function ProfilePage() {
     return (
         <div>
             <ButtonAppBar />
-            <h2>{displayName}</h2>
-            <h3>{email}</h3>
-            
+            <Container maxWidth="md">
+                <h2>{displayName}</h2>
+                <h3>{email}</h3>
+            </Container>
         </div>
     );
 }
