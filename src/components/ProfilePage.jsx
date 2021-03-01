@@ -3,15 +3,18 @@ import {UserContext} from "../providers/UserProvider";
 import {auth} from "../firebase";
 import ButtonAppBar from "./ButtonAppBar";
 import CenteredGrid from "./CenteredGrid";
+import Container from '@material-ui/core/Container';
 
 export default function ProfilePage() {
     const user = useContext(UserContext);
     const {displayName, email} = user;
     return (
-        <div>
+        <div >
             <ButtonAppBar />
-            <h2>{displayName}</h2>
-            <h3>{email}</h3>
+            {/* <h2>{displayName}</h2>
+            <h3>{email}</h3> */}
+            
+                <CenteredGrid /> 
         </div>
     );
 }
