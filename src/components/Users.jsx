@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
+import ButtonAppBar from './ButtonAppBar';
+import { Container } from '@material-ui/core';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -36,8 +38,11 @@ const rows = [
 
 export default function Users() {
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+    <div> 
+      <ButtonAppBar />
+      <Container maxWidth="md">
+        <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+      </Container>
     </div>
   );
 }

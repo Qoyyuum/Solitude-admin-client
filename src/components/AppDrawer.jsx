@@ -49,16 +49,14 @@ export default function AppDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Router>
         {['Users'].map((text, index) => (
-          <Link to={text}>
-            <ListItem button key={index}>
+          <Link to='/users'>
+           <ListItem button key={index}>
                 <ListItemIcon><PersonIcon /></ListItemIcon>
                 <ListItemText primary={text} />
             </ListItem>
           </Link>
         ))}
-        </Router>
       </List>
       <Divider />
     </div>
