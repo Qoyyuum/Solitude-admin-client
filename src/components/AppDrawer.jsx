@@ -8,11 +8,13 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
-import { Link } from '@reach/router';
+
+import { render } from 'react-dom';
+import {Router, Link } from '@reach/router';
+import Users from './Users';
+import { Home } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   list: {
@@ -47,26 +49,21 @@ export default function AppDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['users'].map((text, index) => (
+        <Router>
+        {['Users'].map((text, index) => (
           <Link to={text}>
-            <ListItem button key={text}>
+            <ListItem button key={index}>
                 <ListItemIcon><PersonIcon /></ListItemIcon>
                 <ListItemText primary={text} />
             </ListItem>
           </Link>
         ))}
+        </Router>
       </List>
       <Divider />
-      {/* <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
     </div>
   );
+
 
   return (
     <div>
